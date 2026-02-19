@@ -12,16 +12,37 @@ const IMG_WHEELCHAIR = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc
 const IMG_MEDICINE = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/caba07d1-b21d-46e6-b672-b611baf92915.jpg";
 const IMG_DOCUMENTS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/1277330e-eac2-4a79-ad5c-282bbecfbf72.jpg";
 
+const SEND_URL = "https://functions.poehali.dev/15eda7c0-7bf7-47b0-b1f5-5c7b89543d11";
+
 const ContactForm = ({ id, buttonText = "Получить кандидатов", dark = false }: { id: string; buttonText?: string; dark?: boolean }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !consent) return;
-    setSent(true);
+    if (!name.trim() || !phone.trim() || !consent || loading) return;
+    setLoading(true);
+    setError(false);
+    try {
+      const res = await fetch(SEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), phone: phone.trim(), formId: id }),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (sent) {
@@ -31,7 +52,7 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
           <Icon name="Check" size={24} className={dark ? "text-white" : "text-[#56140E]"} />
         </div>
         <p className={`text-xl font-semibold ${dark ? "text-white" : "text-black"}`}>Заявка отправлена</p>
-        <p className={`text-sm mt-2 ${dark ? "text-white/60" : "text-[#3C3C3C]"}`}>Перезвоним в течение 15 минут</p>
+        <p className={`text-sm mt-2 ${dark ? "text-white/60" : "text-[#3C3C3C]"}`}>Мы перезвоним в течение 15 минут</p>
       </div>
     );
   }
@@ -53,6 +74,11 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
           className={`h-14 text-[16px] rounded-xl px-5 ${dark ? "bg-white/10 border-white/20 text-white placeholder:text-white/40" : "bg-white border-[#ddd] text-black placeholder:text-[#999]"}`}
         />
       </div>
+      {error && (
+        <p className={`text-[13px] mb-3 ${dark ? "text-red-300" : "text-red-600"}`}>
+          Не удалось отправить заявку, попробуйте ещё раз
+        </p>
+      )}
       <label className="flex items-start gap-2.5 mb-4 cursor-pointer select-none">
         <input
           type="checkbox"
@@ -73,10 +99,10 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
       </label>
       <Button
         type="submit"
-        disabled={!consent}
+        disabled={!consent || loading}
         className={`w-full h-14 text-[16px] font-semibold rounded-xl transition-colors ${dark ? "bg-white text-[#56140E] hover:bg-white/90 disabled:bg-white/40" : "bg-[#56140E] text-white hover:bg-[#56140E]/90 disabled:bg-[#56140E]/40"}`}
       >
-        {buttonText}
+        {loading ? "Отправка..." : buttonText}
       </Button>
       <p className={`text-xs text-center mt-3 ${dark ? "text-white/40" : "text-[#999]"}`}>Перезвоним в течение 15 минут</p>
     </form>
