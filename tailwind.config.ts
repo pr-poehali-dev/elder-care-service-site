@@ -19,8 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				heading: ['Cormorant Garamond', 'serif'],
-				body: ['IBM Plex Sans', 'sans-serif'],
+				sans: ['Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

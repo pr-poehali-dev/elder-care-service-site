@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
 
-const LOGO_URL = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/491cceaa-dd7a-4b3b-99c3-d10acbe0e41e.png";
-const PHOTO_HERO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/a9faa77b-4f04-4f0b-a91e-ee17b0da2984.jpg";
-const PHOTO_PROCESS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/2dcd0a8f-28a9-4452-89d1-fe0e30735584.jpg";
-const PHOTO_HANDS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/ca3c63d3-2538-4a84-a729-0d671679bfec.jpg";
+const LOGO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/491cceaa-dd7a-4b3b-99c3-d10acbe0e41e.png";
+const IMG_1 = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/94907160-393d-4bb7-bfe3-ba25b30feaac.jpg";
+const IMG_2 = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/aa480da2-f707-49db-a7c6-b44c28bc9e48.jpg";
+const IMG_3 = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/8d529fe2-aff4-42be-aa66-9236272bb4f7.jpg";
 
-const ContactForm = ({ id, buttonText = "Получить кандидатов", dark = false }: { id: string; buttonText?: string; dark?: boolean }) => {
+const ContactForm = ({ id, buttonText = "Получить кандидатов" }: { id: string; buttonText?: string }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
@@ -22,39 +22,39 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
   if (sent) {
     return (
       <div className="text-center py-8">
-        <div className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 ${dark ? "bg-white/10" : "bg-primary/10"}`}>
-          <Icon name="Check" size={24} className={dark ? "text-white" : "text-primary"} />
+        <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center mx-auto mb-4">
+          <Icon name="Check" size={22} className="text-foreground" />
         </div>
-        <p className={`text-xl font-heading font-semibold ${dark ? "text-white" : "text-foreground"}`}>Заявка отправлена</p>
-        <p className={`text-sm mt-2 ${dark ? "text-white/50" : "text-muted-foreground"}`}>Перезвоним в течение 15 минут</p>
+        <p className="text-xl font-semibold text-foreground">Заявка отправлена</p>
+        <p className="text-sm mt-2 text-muted-foreground">Перезвоним в течение 15 минут</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 w-full" id={id}>
-      <div className="flex flex-col sm:flex-row gap-3">
+    <form onSubmit={handleSubmit} className="w-full" id={id}>
+      <div className="flex flex-col sm:flex-row gap-3 mb-3">
         <Input
           placeholder="Ваше имя"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className={`h-14 font-body text-[15px] rounded-lg ${dark ? "bg-white/10 border-white/15 text-white placeholder:text-white/40 focus:border-white/30" : "bg-white border-border/80 text-foreground placeholder:text-muted-foreground focus:border-primary/40"}`}
+          className="h-13 text-[15px] rounded-lg bg-white border-border text-foreground placeholder:text-muted-foreground"
         />
         <Input
           placeholder="Телефон"
           type="tel"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className={`h-14 font-body text-[15px] rounded-lg ${dark ? "bg-white/10 border-white/15 text-white placeholder:text-white/40 focus:border-white/30" : "bg-white border-border/80 text-foreground placeholder:text-muted-foreground focus:border-primary/40"}`}
+          className="h-13 text-[15px] rounded-lg bg-white border-border text-foreground placeholder:text-muted-foreground"
         />
       </div>
       <Button
         type="submit"
-        className={`w-full h-14 text-[15px] font-body font-semibold rounded-lg tracking-wide transition-all duration-200 ${dark ? "bg-white text-[#1a2e25] hover:bg-white/90" : "bg-primary text-primary-foreground hover:opacity-90"}`}
+        className="w-full h-13 text-[15px] font-semibold rounded-lg bg-foreground text-background hover:bg-foreground/90"
       >
         {buttonText}
       </Button>
-      <p className={`text-xs text-center pt-1 ${dark ? "text-white/40" : "text-muted-foreground"}`}>Перезвоним в течение 15 минут</p>
+      <p className="text-xs text-muted-foreground text-center mt-3">Перезвоним в течение 15 минут</p>
     </form>
   );
 };
@@ -62,18 +62,16 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-foreground/10">
+    <div className="border-b border-border">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-7 text-left group"
+        className="w-full flex items-center justify-between py-6 text-left"
       >
-        <span className="text-xl md:text-2xl font-heading font-medium text-foreground pr-6">{question}</span>
-        <div className="w-8 h-8 rounded-full border border-foreground/15 flex items-center justify-center shrink-0 group-hover:border-foreground/30 transition-colors">
-          <Icon name={open ? "Minus" : "Plus"} size={14} className="text-foreground/60" />
-        </div>
+        <span className="text-[17px] font-medium text-foreground pr-6">{question}</span>
+        <Icon name={open ? "Minus" : "Plus"} size={18} className="text-muted-foreground shrink-0" />
       </button>
       {open && (
-        <div className="pb-7 text-muted-foreground leading-relaxed font-body text-[16px] max-w-2xl">
+        <div className="pb-6 text-muted-foreground leading-relaxed text-[15px] max-w-2xl">
           {answer}
         </div>
       )}
@@ -84,61 +82,65 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+
       {/* БЛОК 1 — Hero */}
-      <section className="relative min-h-screen flex flex-col">
-        <div className="absolute inset-0 bg-[#1a2e25]">
-          <img
-            src={PHOTO_HERO}
-            alt=""
-            className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
-          />
+      <section className="pb-20 md:pb-28">
+        <div className="container pt-10 md:pt-14 mb-16 md:mb-20">
+          <img src={LOGO} alt="Noproblem" className="h-7 md:h-9" />
         </div>
 
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <div className="container pt-8 md:pt-12">
-            <img src={LOGO_URL} alt="Noproblem" className="h-8 md:h-10 invert brightness-200" />
-          </div>
-
-          <div className="container flex-1 flex items-center py-16">
-            <div className="max-w-3xl">
-              <h1 className="text-[44px] md:text-[64px] lg:text-[80px] font-heading font-bold text-white leading-[0.95] mb-8">
-                Срочный подбор<br />сиделки с проживанием<br />
-                <span className="text-white/50">в Москве</span>
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div>
+              <h1 className="text-[38px] md:text-[50px] lg:text-[58px] font-bold text-foreground leading-[1.05] tracking-tight mb-6">
+                Срочный подбор сиделки с проживанием в Москве
               </h1>
 
-              <p className="text-lg md:text-xl text-white/60 font-body font-light leading-relaxed mb-3 max-w-xl">
-                Для ухода после инсульта, при деменции<br className="hidden md:block" /> и за лежачими пациентами
+              <p className="text-[17px] text-muted-foreground leading-relaxed mb-4 max-w-md">
+                Для ухода после инсульта, при деменции и за лежачими пациентами
               </p>
 
-              <div className="flex gap-6 text-sm text-white/40 font-body mb-12">
+              <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground mb-10">
                 <span>Кандидат за 24–72 часа</span>
+                <span className="text-border">·</span>
                 <span>Гарантия замены 1 месяц</span>
               </div>
 
-              <div className="max-w-lg">
-                <ContactForm id="hero-form" dark />
+              <div className="max-w-md mb-8">
+                <ContactForm id="hero-form" />
+              </div>
+
+              <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-[13px] text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-foreground/40" />
+                  Работаем по договору
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-foreground/40" />
+                  Оформление онлайн
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-foreground/40" />
+                  Не нужно никуда ехать
+                </span>
               </div>
             </div>
-          </div>
 
-          <div className="container pb-10">
-            <div className="flex flex-wrap gap-x-10 gap-y-2 text-[13px] text-white/35 font-body tracking-wide uppercase">
-              <span>Работаем по договору</span>
-              <span>Оформление онлайн</span>
-              <span>Не нужно никуда ехать</span>
+            <div className="hidden lg:block">
+              <img src={IMG_1} alt="Забота о пожилых" className="w-full aspect-[4/5] object-cover rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* БЛОК 2 — Когда к нам обращаются */}
-      <section className="py-24 md:py-36">
+      <section className="py-20 md:py-28 bg-card">
         <div className="container">
-          <h2 className="text-[36px] md:text-[52px] lg:text-[64px] font-heading font-bold text-foreground leading-[0.95] mb-20 max-w-2xl">
+          <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-foreground leading-[1.05] tracking-tight mb-16">
             Когда к нам обращаются
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-10 md:gap-14">
+          <div className="grid md:grid-cols-3 gap-10 md:gap-12">
             {[
               {
                 num: "01",
@@ -156,165 +158,145 @@ const Index = () => {
                 text: "После инсульта, инфаркта, перелома шейки бедра или выписки из стационара, когда требуется восстановление и помощь в реабилитации на дому.",
               },
             ].map((item) => (
-              <div key={item.num} className="border-t border-foreground/10 pt-8">
-                <span className="text-xs font-body text-muted-foreground/60 tracking-[0.2em] uppercase">{item.num}</span>
-                <h3 className="text-2xl md:text-3xl font-heading font-semibold text-foreground mt-4 mb-4">{item.title}</h3>
-                <p className="text-muted-foreground text-[16px] leading-[1.7] font-body font-light">{item.text}</p>
+              <div key={item.num}>
+                <span className="text-[13px] text-muted-foreground/50 tracking-widest">{item.num}</span>
+                <h3 className="text-[22px] font-semibold text-foreground mt-3 mb-3 leading-tight">{item.title}</h3>
+                <p className="text-muted-foreground text-[15px] leading-[1.7]">{item.text}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-muted-foreground font-body text-[15px] mt-16 border-l-2 border-primary/30 pl-6 max-w-lg">
+          <p className="text-muted-foreground text-[15px] mt-14 border-l-2 border-foreground/10 pl-5 max-w-md">
             Мы подключаемся в ситуациях, где важна точность подбора и надёжность.
           </p>
         </div>
       </section>
 
       {/* БЛОК 3 — Как проходит подбор */}
-      <section className="py-24 md:py-36 bg-[#1a2e25] text-white">
+      <section className="py-20 md:py-28">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div>
-              <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-heading font-bold leading-[0.95] mb-14">
+              <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-foreground leading-[1.05] tracking-tight mb-14">
                 Как проходит подбор
               </h2>
 
-              <div className="space-y-0">
+              <div className="space-y-0 mb-10">
                 {[
                   "Вы описываете ситуацию и свои ожидания от сиделки",
                   "Подписываем договор — онлайн",
                   "Мы проводим телефонные и видео-интервью с кандидатами",
                   "Приводим на видео-собеседование к вам только подходящих",
                 ].map((text, i) => (
-                  <div key={i} className="flex gap-5 items-start">
+                  <div key={i} className="flex gap-4 items-start">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-sm font-body text-white/70 shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-foreground text-background flex items-center justify-center text-sm font-medium shrink-0">
                         {i + 1}
                       </div>
-                      {i < 3 && <div className="w-px h-8 bg-white/10" />}
+                      {i < 3 && <div className="w-px h-8 bg-border" />}
                     </div>
-                    <p className="text-white/80 font-body text-[16px] pt-2.5 pb-4 leading-relaxed">{text}</p>
+                    <p className="text-foreground text-[15px] pt-2 pb-4 leading-relaxed">{text}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-10 space-y-1.5 text-white/40 font-body text-[15px]">
+              <div className="space-y-1.5 text-muted-foreground text-[15px] mb-10">
                 <p>Персональный подбор под вашу ситуацию. Без массовых баз и «потока».</p>
                 <p>Вы избежите ошибок и стресса. Сэкономите время и нервы.</p>
               </div>
 
-              <div className="mt-10 max-w-lg">
-                <ContactForm id="process-form" buttonText="Заказать звонок" dark />
+              <div className="max-w-md">
+                <ContactForm id="process-form" buttonText="Заказать звонок" />
               </div>
             </div>
 
             <div className="hidden lg:block">
-              <img
-                src={PHOTO_PROCESS}
-                alt="Забота о пожилых"
-                className="w-full aspect-[3/4] object-cover rounded-2xl"
-              />
+              <img src={IMG_2} alt="Помощь пожилым" className="w-full aspect-[4/5] object-cover rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* БЛОК 4 — Почему дешёвый подбор */}
-      <section className="py-24 md:py-36">
+      <section className="py-20 md:py-28 bg-card">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            <div>
-              <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-heading font-bold text-foreground leading-[0.95] mb-10">
-                Почему дешёвый подбор часто заканчивается заменой
-              </h2>
+          <div className="max-w-2xl">
+            <h2 className="text-[32px] md:text-[44px] lg:text-[48px] font-bold text-foreground leading-[1.05] tracking-tight mb-10">
+              Почему дешёвый подбор часто заканчивается заменой
+            </h2>
 
-              <p className="text-muted-foreground font-body text-[16px] mb-8 leading-relaxed">
-                Минимальная стоимость подбора обычно означает:
-              </p>
+            <p className="text-muted-foreground text-[16px] mb-8 leading-relaxed">
+              Минимальная стоимость подбора обычно означает:
+            </p>
 
-              <div className="space-y-4 mb-10">
-                {[
-                  "Отсутствие глубинных интервью и проверки опыта",
-                  "Неподтверждённую практику работы с диагнозом",
-                  "Формальную передачу контакта",
-                  "Отсутствие проверки документов",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 mt-2.5 shrink-0" />
-                    <span className="text-foreground font-body text-[16px] leading-relaxed">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-card rounded-xl p-8">
-                <p className="text-muted-foreground font-body text-[16px] leading-relaxed">
-                  Экономия на качестве подбора приводит к повторному поиску уже через 1–2 недели.
-                </p>
-                <p className="text-foreground font-body font-semibold text-[17px] mt-3">
-                  Наша задача — сделать один точный подбор.
-                </p>
-              </div>
+            <div className="space-y-3.5 mb-10">
+              {[
+                "Отсутствие глубинных интервью и проверки опыта",
+                "Неподтверждённую практику работы с диагнозом",
+                "Формальную передачу контакта",
+                "Отсутствие проверки документов",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-foreground/25 mt-2.5 shrink-0" />
+                  <span className="text-foreground text-[16px] leading-relaxed">{item}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="hidden lg:block sticky top-24">
-              <img
-                src={PHOTO_HANDS}
-                alt="Забота"
-                className="w-full aspect-square object-cover rounded-2xl"
-              />
-            </div>
+            <p className="text-muted-foreground text-[15px] leading-relaxed mb-2">
+              Экономия на качестве подбора приводит к повторному поиску уже через 1–2 недели.
+            </p>
+            <p className="text-foreground font-semibold text-[16px]">
+              Наша задача — сделать один точный подбор.
+            </p>
           </div>
         </div>
       </section>
 
       {/* БЛОК 5 — Стоимость */}
-      <section className="py-24 md:py-36 bg-card">
+      <section className="py-20 md:py-28">
         <div className="container">
-          <h2 className="text-[36px] md:text-[52px] lg:text-[64px] font-heading font-bold text-foreground leading-[0.95] mb-20 text-center">
+          <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-foreground leading-[1.05] tracking-tight mb-16">
             Стоимость
           </h2>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              <div className="bg-background rounded-2xl p-8 md:p-10 border border-border/50">
-                <p className="text-xs font-body text-muted-foreground/60 tracking-[0.2em] uppercase mb-6">Стандартный</p>
-                <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-1">Подбор сиделки</h3>
-                <p className="text-muted-foreground text-[15px] font-body mb-8">Под ваш запрос</p>
-                <p className="text-4xl md:text-5xl font-heading font-bold text-foreground">50 000 ₽</p>
-                <p className="text-sm text-muted-foreground font-body mt-2">Гарантия — 1 месяц</p>
+          <div className="max-w-4xl">
+            <div className="grid md:grid-cols-2 gap-5 mb-8">
+              <div className="bg-card rounded-xl p-8 md:p-10">
+                <p className="text-[13px] text-muted-foreground/60 tracking-widest uppercase mb-5">Стандартный</p>
+                <h3 className="text-[24px] font-bold text-foreground mb-1">Подбор сиделки</h3>
+                <p className="text-muted-foreground text-[15px] mb-6">Под ваш запрос</p>
+                <p className="text-[36px] md:text-[42px] font-bold text-foreground tracking-tight">50 000 ₽</p>
+                <p className="text-sm text-muted-foreground mt-1">Гарантия — 1 месяц</p>
               </div>
 
-              <div className="bg-[#1a2e25] rounded-2xl p-8 md:p-10 text-white">
-                <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase mb-6">Приоритет</p>
-                <h3 className="text-3xl md:text-4xl font-heading font-bold mb-1">Срочный подбор</h3>
-                <p className="text-white/50 text-[15px] font-body mb-8">24–48 часов</p>
-                <p className="text-4xl md:text-5xl font-heading font-bold">70 000 ₽</p>
-                <p className="text-sm text-white/50 font-body mt-2">Гарантия — 1 месяц</p>
+              <div className="bg-foreground rounded-xl p-8 md:p-10 text-background">
+                <p className="text-[13px] text-background/40 tracking-widest uppercase mb-5">Приоритет</p>
+                <h3 className="text-[24px] font-bold mb-1">Срочный подбор</h3>
+                <p className="text-background/50 text-[15px] mb-6">24–48 часов</p>
+                <p className="text-[36px] md:text-[42px] font-bold tracking-tight">70 000 ₽</p>
+                <p className="text-sm text-background/50 mt-1">Гарантия — 1 месяц</p>
               </div>
             </div>
 
-            <div className="bg-background rounded-2xl border border-border/50 p-8 md:p-10">
-              <p className="text-sm font-body font-semibold text-foreground mb-8 tracking-wide uppercase">Дополнительно</p>
-              <div className="space-y-0">
-                {[
-                  { name: "Проверка благонадёжности", price: "5 000 ₽" },
-                  { name: "Замена вне гарантии", price: "25 000 ₽" },
-                  { name: "Перевозка лежачих пациентов", price: "от 15 000 ₽" },
-                  { name: "Выезд психиатра-геронтолога на дом", price: "от 25 000 ₽", note: "возможно дальнейшее сопровождение пациента" },
-                  { name: "Выезд врача-реабилитолога на дом", price: "от 8 000 ₽", note: "оценивает состояние и подключает команду для восстановления" },
-                ].map((item, i, arr) => (
-                  <div key={item.name} className={`flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-8 py-5 ${i < arr.length - 1 ? "border-b border-border/50" : ""}`}>
-                    <div>
-                      <span className="text-foreground text-[16px] font-body">{item.name}</span>
-                      {item.note && (
-                        <p className="text-[13px] text-muted-foreground font-body mt-1">{item.note}</p>
-                      )}
-                    </div>
-                    <span className="text-foreground font-body font-semibold text-[16px] shrink-0">{item.price}</span>
+            <div className="bg-card rounded-xl p-8 md:p-10">
+              <p className="text-[13px] font-semibold text-foreground tracking-widest uppercase mb-6">Дополнительно</p>
+              {[
+                { name: "Проверка благонадёжности", price: "5 000 ₽" },
+                { name: "Замена вне гарантии", price: "25 000 ₽" },
+                { name: "Перевозка лежачих пациентов", price: "от 15 000 ₽" },
+                { name: "Выезд психиатра-геронтолога на дом", price: "от 25 000 ₽", note: "возможно дальнейшее сопровождение пациента" },
+                { name: "Выезд врача-реабилитолога на дом", price: "от 8 000 ₽", note: "оценивает состояние и подключает команду для восстановления" },
+              ].map((item, i, arr) => (
+                <div key={item.name} className={`flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-8 py-4 ${i < arr.length - 1 ? "border-b border-border" : ""}`}>
+                  <div>
+                    <span className="text-foreground text-[15px]">{item.name}</span>
+                    {item.note && <p className="text-[13px] text-muted-foreground mt-0.5">{item.note}</p>}
                   </div>
-                ))}
-              </div>
-              <p className="text-xs text-muted-foreground/60 font-body mt-8">
+                  <span className="text-foreground font-semibold text-[15px] shrink-0">{item.price}</span>
+                </div>
+              ))}
+              <p className="text-[13px] text-muted-foreground/50 mt-6">
                 *Стоимость может меняться, подробнее уточняйте у менеджера
               </p>
             </div>
@@ -323,112 +305,113 @@ const Index = () => {
       </section>
 
       {/* БЛОК 6 — Почему нам доверяют */}
-      <section className="py-24 md:py-36">
+      <section className="py-20 md:py-28 bg-card">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-heading font-bold text-foreground leading-[0.95] mb-16 text-center">
-              Почему нам доверяют<br />семьи предпринимателей
-            </h2>
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div>
+              <h2 className="text-[32px] md:text-[44px] lg:text-[48px] font-bold text-foreground leading-[1.05] tracking-tight mb-12">
+                Почему нам доверяют семьи предпринимателей
+              </h2>
 
-            <div className="grid sm:grid-cols-2 gap-6 mb-16">
-              {[
-                { icon: "Lock", title: "Конфиденциальность", text: "Полная защита информации о вашей семье и ситуации" },
-                { icon: "Zap", title: "Быстрое принятие решений", text: "Без бюрократии и лишних согласований" },
-                { icon: "Monitor", title: "Онлайн-оформление", text: "Без лишних встреч, поездок и ожидания менеджера" },
-                { icon: "FileCheck", title: "Чёткие договорённости", text: "Прозрачные условия и юридическая ответственность" },
-              ].map((item) => (
-                <div key={item.title} className="bg-card rounded-xl p-7 border border-border/30">
-                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mb-5">
-                    <Icon name={item.icon} size={18} className="text-primary" />
+              <div className="space-y-6 mb-12">
+                {[
+                  "Конфиденциальность",
+                  "Быстрое принятие решений",
+                  "Онлайн-оформление без лишних встреч",
+                  "Чёткие договорённости и ответственность",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-foreground flex items-center justify-center shrink-0">
+                      <Icon name="Check" size={13} className="text-background" />
+                    </div>
+                    <p className="text-foreground text-[16px] font-medium">{item}</p>
                   </div>
-                  <p className="font-heading font-semibold text-foreground text-xl mb-2">{item.title}</p>
-                  <p className="text-muted-foreground text-[15px] font-body leading-relaxed">{item.text}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              <div className="max-w-md">
+                <ContactForm id="trust-form" buttonText="Оставить заявку" />
+              </div>
             </div>
 
-            <div className="max-w-lg mx-auto">
-              <ContactForm id="trust-form" buttonText="Оставить заявку" />
+            <div className="hidden lg:block">
+              <img src={IMG_3} alt="Забота" className="w-full aspect-square object-cover rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* БЛОК 7 — Отзывы */}
-      <section className="py-24 md:py-36 bg-card">
+      <section className="py-20 md:py-28">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-heading font-bold text-foreground leading-[0.95] mb-6 text-center">
-              Отзывы
-            </h2>
+          <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-foreground leading-[1.05] tracking-tight mb-4">
+            Отзывы
+          </h2>
 
-            <p className="text-center text-muted-foreground font-body text-[16px] leading-relaxed mb-16 max-w-lg mx-auto">
-              Каждый подбор индивидуально. Вот что говорят наши клиенты:
-            </p>
+          <p className="text-muted-foreground text-[16px] leading-relaxed mb-14 max-w-lg">
+            Каждый подбор индивидуально. Вот что говорят наши клиенты:
+          </p>
 
-            <div className="grid sm:grid-cols-2 gap-6 mb-12">
-              {[
-                {
-                  text: "Обратилась за подбором сиделки для мамы после инсульта. Подобрали очень быстро, кандидат замечательный. Спасибо за профессионализм!",
-                  link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=zt841g5tfbm4uzpfte7emdhqcc&utm_source=review",
-                },
-                {
-                  text: "Нужна была сиделка с проживанием для папы с деменцией. Noproblem подобрали именно того человека, который подошёл нашей семье.",
-                  link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=xpnca7dg4g22ynemryyg08k7bm&utm_source=review",
-                },
-                {
-                  text: "Всё оформили онлайн, никуда не нужно было ехать. Очень удобно и профессионально. Рекомендую.",
-                  link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=m9f5r7maa4dr0dx031rn5dvg4m&utm_source=review",
-                },
-                {
-                  text: "Благодарю за оперативную работу и внимательное отношение. Замена по гарантии прошла быстро и без проблем.",
-                  link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=0g292p9ta4w02yg3dmfc7u1prr&utm_source=review",
-                },
-              ].map((review, i) => (
-                <a
-                  key={i}
-                  href={review.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-background rounded-xl p-7 border border-border/30 hover:border-primary/20 transition-colors"
-                >
-                  <div className="flex gap-1 mb-5">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Icon key={s} name="Star" size={14} className="text-amber-500 fill-amber-500" />
-                    ))}
-                  </div>
-                  <p className="text-foreground text-[15px] font-body leading-[1.7] mb-6">
-                    «{review.text}»
-                  </p>
-                  <span className="text-xs text-muted-foreground/60 font-body uppercase tracking-wider">Яндекс.Карты</span>
-                </a>
-              ))}
-            </div>
-
-            <div className="text-center">
+          <div className="grid sm:grid-cols-2 gap-5 mb-10">
+            {[
+              {
+                text: "Обратилась за подбором сиделки для мамы после инсульта. Подобрали очень быстро, кандидат замечательный. Спасибо за профессионализм!",
+                link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=zt841g5tfbm4uzpfte7emdhqcc&utm_source=review",
+              },
+              {
+                text: "Нужна была сиделка с проживанием для папы с деменцией. Noproblem подобрали именно того человека, который подошёл нашей семье.",
+                link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=xpnca7dg4g22ynemryyg08k7bm&utm_source=review",
+              },
+              {
+                text: "Всё оформили онлайн, никуда не нужно было ехать. Очень удобно и профессионально. Рекомендую.",
+                link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=m9f5r7maa4dr0dx031rn5dvg4m&utm_source=review",
+              },
+              {
+                text: "Благодарю за оперативную работу и внимательное отношение. Замена по гарантии прошла быстро и без проблем.",
+                link: "https://yandex.com/maps/org/97350777975/reviews?reviews%5BpublicId%5D=0g292p9ta4w02yg3dmfc7u1prr&utm_source=review",
+              },
+            ].map((review, i) => (
               <a
-                href="https://yandex.com/maps/org/97350777975/reviews"
+                key={i}
+                href={review.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground font-body transition-colors border-b border-muted-foreground/30 hover:border-foreground/30 pb-0.5"
+                className="block bg-card rounded-xl p-7 hover:bg-card/80 transition-colors"
               >
-                Все отзывы на Яндекс.Картах
-                <Icon name="ArrowUpRight" size={14} />
+                <div className="flex gap-0.5 mb-4">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Icon key={s} name="Star" size={14} className="text-amber-400 fill-amber-400" />
+                  ))}
+                </div>
+                <p className="text-foreground text-[15px] leading-[1.7] mb-5">
+                  «{review.text}»
+                </p>
+                <span className="text-[13px] text-muted-foreground/50 tracking-wider uppercase">Яндекс.Карты</span>
               </a>
-            </div>
+            ))}
           </div>
+
+          <a
+            href="https://yandex.com/maps/org/97350777975/reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Все отзывы на Яндекс.Картах
+            <Icon name="ArrowUpRight" size={14} />
+          </a>
         </div>
       </section>
 
       {/* БЛОК 8 — FAQ */}
-      <section className="py-24 md:py-36">
+      <section className="py-20 md:py-28 bg-card">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-heading font-bold text-foreground leading-[0.95] mb-14 text-center">
+          <div className="max-w-3xl">
+            <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-foreground leading-[1.05] tracking-tight mb-12">
               Частые вопросы
             </h2>
 
-            <div className="border-t border-foreground/10">
+            <div className="border-t border-border">
               <FAQItem
                 question="Сколько занимает подбор?"
                 answer="Обычно 24–72 часа. Всё зависит от вашей ситуации."
@@ -451,51 +434,42 @@ const Index = () => {
       </section>
 
       {/* БЛОК 9 — Финальный CTA */}
-      <section className="relative py-28 md:py-40 bg-[#1a2e25] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={PHOTO_HANDS}
-            alt=""
-            className="w-full h-full object-cover opacity-15 mix-blend-luminosity"
-          />
-        </div>
-        <div className="container relative z-10">
+      <section className="py-24 md:py-32 bg-foreground text-background">
+        <div className="container">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-[36px] md:text-[52px] lg:text-[64px] font-heading font-bold leading-[0.95] mb-6">
-              В сложных ситуациях<br />время имеет значение
+            <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-bold leading-[1.05] tracking-tight mb-4">
+              В сложных ситуациях время имеет значение
             </h2>
-            <p className="text-white/45 font-body text-lg mb-12">
+            <p className="text-background/45 text-[17px] mb-12">
               Оставьте номер, чтобы начать подбор сегодня.
             </p>
-            <div className="max-w-lg mx-auto">
-              <ContactForm id="final-form" buttonText="Начать подбор" dark />
+            <div className="max-w-md mx-auto">
+              <CtaDarkForm />
             </div>
           </div>
         </div>
       </section>
 
       {/* БЛОК 10 — Футер */}
-      <footer className="py-14 bg-[#141c18] text-white/50">
+      <footer className="py-12 border-t border-border">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-10">
-              <div>
-                <img src={LOGO_URL} alt="Noproblem" className="h-6 invert brightness-200 opacity-60 mb-3" />
-                <p className="text-sm font-body text-white/30">Подбор сиделок в Москве</p>
-              </div>
-              <div className="text-[13px] font-body space-y-1 text-white/30">
-                <p>ИП Горшенёва Анастасия Юрьевна</p>
-                <p>ОГРНИП 325774600458353</p>
-                <p>ИНН 773774314704</p>
-              </div>
-              <div className="text-sm font-body space-y-1.5">
-                <a href="tel:+79163191286" className="block text-white/60 hover:text-white transition-colors">
-                  +7 (916) 319-12-86
-                </a>
-                <a href="mailto:noproblem.msk@yandex.ru" className="block text-white/35 hover:text-white/60 transition-colors">
-                  noproblem.msk@yandex.ru
-                </a>
-              </div>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
+            <div>
+              <img src={LOGO} alt="Noproblem" className="h-5 mb-2" />
+              <p className="text-[13px] text-muted-foreground mt-1">Подбор сиделок в Москве</p>
+            </div>
+            <div className="text-[13px] text-muted-foreground space-y-1">
+              <p>ИП Горшенёва Анастасия Юрьевна</p>
+              <p>ОГРНИП 325774600458353</p>
+              <p>ИНН 773774314704</p>
+            </div>
+            <div className="text-sm space-y-1">
+              <a href="tel:+79163191286" className="block text-foreground hover:text-foreground/70 transition-colors">
+                +7 (916) 319-12-86
+              </a>
+              <a href="mailto:noproblem.msk@yandex.ru" className="block text-muted-foreground hover:text-foreground transition-colors">
+                noproblem.msk@yandex.ru
+              </a>
             </div>
           </div>
         </div>
@@ -505,13 +479,64 @@ const Index = () => {
       <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center md:hidden px-4">
         <a
           href="tel:+79163191286"
-          className="flex items-center gap-2.5 bg-[#1a2e25] text-white px-8 py-4 rounded-full font-body font-semibold text-sm tracking-wide"
+          className="flex items-center gap-2 bg-foreground text-background px-8 py-3.5 rounded-full font-semibold text-sm"
         >
-          <Icon name="Phone" size={16} />
+          <Icon name="Phone" size={15} />
           Позвонить
         </a>
       </div>
     </div>
+  );
+};
+
+const CtaDarkForm = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !phone.trim()) return;
+    setSent(true);
+  };
+
+  if (sent) {
+    return (
+      <div className="text-center py-8">
+        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
+          <Icon name="Check" size={22} className="text-white" />
+        </div>
+        <p className="text-xl font-semibold text-white">Заявка отправлена</p>
+        <p className="text-sm mt-2 text-white/50">Перезвоним в течение 15 минут</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="flex flex-col sm:flex-row gap-3 mb-3">
+        <Input
+          placeholder="Ваше имя"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="h-13 text-[15px] rounded-lg bg-white/10 border-white/15 text-white placeholder:text-white/40"
+        />
+        <Input
+          placeholder="Телефон"
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="h-13 text-[15px] rounded-lg bg-white/10 border-white/15 text-white placeholder:text-white/40"
+        />
+      </div>
+      <Button
+        type="submit"
+        className="w-full h-13 text-[15px] font-semibold rounded-lg bg-white text-foreground hover:bg-white/90"
+      >
+        Начать подбор
+      </Button>
+      <p className="text-xs text-white/35 text-center mt-3">Перезвоним в течение 15 минут</p>
+    </form>
   );
 };
 

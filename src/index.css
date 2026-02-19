@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 30 20% 96%;
-    --foreground: 220 20% 10%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
 
-    --card: 30 15% 94%;
-    --card-foreground: 220 20% 10%;
+    --card: 0 0% 97%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 150 25% 20%;
-    --primary-foreground: 30 20% 96%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 12% 91%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 30 10% 92%;
-    --muted-foreground: 220 10% 42%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 150 25% 20%;
-    --accent-foreground: 30 20% 96%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 99%;
 
-    --border: 30 10% 87%;
-    --input: 30 10% 87%;
-    --ring: 150 25% 20%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 8%;
 
     --radius: 0.5rem;
 
@@ -52,7 +52,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -63,18 +63,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Cormorant Garamond", serif;
-    letter-spacing: -0.02em;
-  }
-}
-
-@layer utilities {
-  .font-heading {
-    font-family: "Cormorant Garamond", serif;
-    letter-spacing: -0.02em;
-  }
-  .font-body {
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
 
