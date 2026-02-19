@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
@@ -14,11 +15,12 @@ const IMG_DOCUMENTS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-
 const ContactForm = ({ id, buttonText = "Получить кандидатов", dark = false }: { id: string; buttonText?: string; dark?: boolean }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) return;
+    if (!name.trim() || !phone.trim() || !consent) return;
     setSent(true);
   };
 
@@ -51,9 +53,28 @@ const ContactForm = ({ id, buttonText = "Получить кандидатов",
           className={`h-14 text-[16px] rounded-xl px-5 ${dark ? "bg-white/10 border-white/20 text-white placeholder:text-white/40" : "bg-white border-[#ddd] text-black placeholder:text-[#999]"}`}
         />
       </div>
+      <label className="flex items-start gap-2.5 mb-4 cursor-pointer select-none">
+        <input
+          type="checkbox"
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          className="mt-0.5 w-4 h-4 shrink-0 accent-[#56140E] cursor-pointer"
+        />
+        <span className={`text-[12px] leading-[1.5] ${dark ? "text-white/60" : "text-[#999]"}`}>
+          Я даю согласие на{" "}
+          <Link to="/consent" className={`underline ${dark ? "text-white/80 hover:text-white" : "text-[#3C3C3C] hover:text-black"}`}>
+            обработку персональных данных
+          </Link>
+          {" "}в соответствии с{" "}
+          <Link to="/privacy" className={`underline ${dark ? "text-white/80 hover:text-white" : "text-[#3C3C3C] hover:text-black"}`}>
+            Политикой конфиденциальности
+          </Link>
+        </span>
+      </label>
       <Button
         type="submit"
-        className={`w-full h-14 text-[16px] font-semibold rounded-xl transition-colors ${dark ? "bg-white text-[#56140E] hover:bg-white/90" : "bg-[#56140E] text-white hover:bg-[#56140E]/90"}`}
+        disabled={!consent}
+        className={`w-full h-14 text-[16px] font-semibold rounded-xl transition-colors ${dark ? "bg-white text-[#56140E] hover:bg-white/90 disabled:bg-white/40" : "bg-[#56140E] text-white hover:bg-[#56140E]/90 disabled:bg-[#56140E]/40"}`}
       >
         {buttonText}
       </Button>
@@ -486,6 +507,14 @@ const Index = () => {
                 noproblem.msk@yandex.ru
               </a>
             </div>
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-10 pt-8 border-t border-[#e5e5e5]">
+            <Link to="/privacy" className="text-[13px] text-[#999] hover:text-[#3C3C3C] transition-colors">
+              Политика конфиденциальности
+            </Link>
+            <Link to="/consent" className="text-[13px] text-[#999] hover:text-[#3C3C3C] transition-colors">
+              Согласие на обработку персональных данных
+            </Link>
           </div>
         </div>
       </footer>
