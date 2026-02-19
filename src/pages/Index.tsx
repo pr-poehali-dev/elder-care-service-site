@@ -129,11 +129,11 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="hidden lg:block w-[420px] shrink-0">
+            <div className="w-full lg:w-[420px] shrink-0">
               <img
                 src={IMG_HERO}
                 alt="Забота о пожилых"
-                className="w-full h-[520px] object-cover rounded-2xl"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
@@ -169,7 +169,7 @@ const Index = () => {
               },
             ].map((item) => (
               <div key={item.num}>
-                <img src={item.img} alt={item.title} className="w-full h-48 object-cover rounded-xl mb-5" />
+                <img src={item.img} alt={item.title} className="w-full rounded-xl mb-5" />
                 <span className="text-[13px] text-[#56140E] tracking-widest font-medium">{item.num}</span>
                 <h3 className="text-[22px] font-semibold text-black mt-3 mb-3 leading-tight">{item.title}</h3>
                 <p className="text-[#3C3C3C] text-[15px] leading-[1.7]">{item.text}</p>
@@ -257,11 +257,11 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="hidden lg:block w-[380px] shrink-0">
+            <div className="w-full lg:w-[380px] shrink-0">
               <img
                 src={IMG_DOCUMENTS}
                 alt="Проверка документов"
-                className="w-full h-[400px] object-cover rounded-2xl"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
