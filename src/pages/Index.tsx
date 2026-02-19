@@ -5,6 +5,12 @@ import Icon from "@/components/ui/icon";
 
 const LOGO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/491cceaa-dd7a-4b3b-99c3-d10acbe0e41e.png";
 
+const IMG_HERO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/469d8b55-4562-4e76-893a-8cfb2df9bec6.jpg";
+const IMG_CARE_HANDS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/26d54366-d682-494d-a3a6-44109d1d7cf1.jpg";
+const IMG_WHEELCHAIR = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/ad68136a-68da-42da-8c84-c63a622b879f.jpg";
+const IMG_MEDICINE = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/caba07d1-b21d-46e6-b672-b611baf92915.jpg";
+const IMG_DOCUMENTS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/1277330e-eac2-4a79-ad5c-282bbecfbf72.jpg";
+
 const ContactForm = ({ id, buttonText = "Получить кандидатов", dark = false }: { id: string; buttonText?: string; dark?: boolean }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -87,38 +93,48 @@ const Index = () => {
         </div>
 
         <div className="container">
-          <div className="max-w-3xl">
-            <h1 className="text-[38px] md:text-[50px] lg:text-[58px] font-bold text-black leading-[1.05] tracking-tight mb-6">
-              Срочный подбор сиделки с проживанием в Москве
-            </h1>
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            <div className="max-w-2xl flex-1">
+              <h1 className="text-[38px] md:text-[50px] lg:text-[58px] font-bold text-black leading-[1.05] tracking-tight mb-6">
+                Срочный подбор сиделки с проживанием в Москве
+              </h1>
 
-            <p className="text-[17px] text-[#3C3C3C] leading-relaxed mb-4 max-w-lg">
-              Для ухода после инсульта, при деменции и за лежачими пациентами
-            </p>
+              <p className="text-[17px] text-[#3C3C3C] leading-relaxed mb-4 max-w-lg">
+                Для ухода после инсульта, при деменции и за лежачими пациентами
+              </p>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-[#3C3C3C] mb-10">
-              <span>Кандидат за 24–72 часа</span>
-              <span className="text-[#ddd]">·</span>
-              <span>Гарантия замены 1 месяц</span>
+              <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-[#3C3C3C] mb-10">
+                <span>Кандидат за 24–72 часа</span>
+                <span className="text-[#ddd]">·</span>
+                <span>Гарантия замены 1 месяц</span>
+              </div>
+
+              <div className="max-w-md mb-8">
+                <ContactForm id="hero-form" />
+              </div>
+
+              <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-[13px] text-[#3C3C3C]">
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-[#56140E]" />
+                  Работаем по договору
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-[#56140E]" />
+                  Оформление онлайн
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Icon name="Check" size={14} className="text-[#56140E]" />
+                  Не нужно никуда ехать
+                </span>
+              </div>
             </div>
 
-            <div className="max-w-md mb-8">
-              <ContactForm id="hero-form" />
-            </div>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-[13px] text-[#3C3C3C]">
-              <span className="flex items-center gap-1.5">
-                <Icon name="Check" size={14} className="text-[#56140E]" />
-                Работаем по договору
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Icon name="Check" size={14} className="text-[#56140E]" />
-                Оформление онлайн
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Icon name="Check" size={14} className="text-[#56140E]" />
-                Не нужно никуда ехать
-              </span>
+            <div className="hidden lg:block w-[420px] shrink-0">
+              <img
+                src={IMG_HERO}
+                alt="Забота о пожилых"
+                className="w-full h-[520px] object-cover rounded-2xl"
+              />
             </div>
           </div>
         </div>
@@ -137,19 +153,23 @@ const Index = () => {
                 num: "01",
                 title: "Круглосуточный уход",
                 text: "Когда человек лежачий или полностью утратил самостоятельность и требуется постоянный контроль состояния, гигиены и питания.",
+                img: IMG_WHEELCHAIR,
               },
               {
                 num: "02",
                 title: "Присмотр и помощь по быту",
                 text: "При деменции, возрастных нарушениях памяти или снижении самостоятельности, когда важно присутствие, контроль лекарств и помощь в повседневных делах.",
+                img: IMG_CARE_HANDS,
               },
               {
                 num: "03",
                 title: "Уход после острого состояния",
                 text: "После инсульта, инфаркта, перелома шейки бедра или выписки из стационара, когда требуется восстановление и помощь в реабилитации на дому.",
+                img: IMG_MEDICINE,
               },
             ].map((item) => (
               <div key={item.num}>
+                <img src={item.img} alt={item.title} className="w-full h-48 object-cover rounded-xl mb-5" />
                 <span className="text-[13px] text-[#56140E] tracking-widest font-medium">{item.num}</span>
                 <h3 className="text-[22px] font-semibold text-black mt-3 mb-3 leading-tight">{item.title}</h3>
                 <p className="text-[#3C3C3C] text-[15px] leading-[1.7]">{item.text}</p>
@@ -205,35 +225,45 @@ const Index = () => {
       {/* БЛОК 4 — Почему дешёвый подбор */}
       <section className="py-20 md:py-28 border-t border-[#e5e5e5]">
         <div className="container">
-          <div className="max-w-2xl">
-            <h2 className="text-[32px] md:text-[44px] lg:text-[48px] font-bold text-black leading-[1.05] tracking-tight mb-10">
-              Почему дешёвый подбор часто заканчивается заменой
-            </h2>
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            <div className="max-w-2xl flex-1">
+              <h2 className="text-[32px] md:text-[44px] lg:text-[48px] font-bold text-black leading-[1.05] tracking-tight mb-10">
+                Почему дешёвый подбор часто заканчивается заменой
+              </h2>
 
-            <p className="text-[#3C3C3C] text-[16px] mb-8 leading-relaxed">
-              Минимальная стоимость подбора обычно означает:
-            </p>
+              <p className="text-[#3C3C3C] text-[16px] mb-8 leading-relaxed">
+                Минимальная стоимость подбора обычно означает:
+              </p>
 
-            <div className="space-y-3.5 mb-10">
-              {[
-                "Отсутствие глубинных интервью и проверки опыта",
-                "Неподтверждённую практику работы с диагнозом",
-                "Формальную передачу контакта",
-                "Отсутствие проверки документов",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#56140E]/40 mt-2.5 shrink-0" />
-                  <span className="text-black text-[16px] leading-relaxed">{item}</span>
-                </div>
-              ))}
+              <div className="space-y-3.5 mb-10">
+                {[
+                  "Отсутствие глубинных интервью и проверки опыта",
+                  "Неподтверждённую практику работы с диагнозом",
+                  "Формальную передачу контакта",
+                  "Отсутствие проверки документов",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#56140E]/40 mt-2.5 shrink-0" />
+                    <span className="text-black text-[16px] leading-relaxed">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-[#3C3C3C] text-[15px] leading-relaxed mb-2">
+                Экономия на качестве подбора приводит к повторному поиску уже через 1–2 недели.
+              </p>
+              <p className="text-black font-semibold text-[16px]">
+                Наша задача — сделать один точный подбор.
+              </p>
             </div>
 
-            <p className="text-[#3C3C3C] text-[15px] leading-relaxed mb-2">
-              Экономия на качестве подбора приводит к повторному поиску уже через 1–2 недели.
-            </p>
-            <p className="text-black font-semibold text-[16px]">
-              Наша задача — сделать один точный подбор.
-            </p>
+            <div className="hidden lg:block w-[380px] shrink-0">
+              <img
+                src={IMG_DOCUMENTS}
+                alt="Проверка документов"
+                className="w-full h-[400px] object-cover rounded-2xl"
+              />
+            </div>
           </div>
         </div>
       </section>
