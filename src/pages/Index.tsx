@@ -6,10 +6,10 @@ import Icon from "@/components/ui/icon";
 
 const LOGO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/bucket/491cceaa-dd7a-4b3b-99c3-d10acbe0e41e.png";
 
-const IMG_HERO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/4a714f5d-8578-4fc6-8002-8704a4c4927f.jpg";
-const IMG_CARE_HANDS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/c4562386-52b5-45be-8349-782c86146ff5.jpg";
-const IMG_INTERIOR = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/5128686f-263f-4dd8-a6a0-dc2296bb0586.jpg";
-const IMG_MEDICINE = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/8f3d05e1-f746-4b8c-89d9-983f1a1a6fc5.jpg";
+const IMG_HERO = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/9fa5e7fb-06e2-4b35-bcec-4f3bda84a683.jpg";
+const IMG_CARE_HANDS = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/bf60428f-7a99-4872-aee3-e4bc8281bf2a.jpg";
+const IMG_WHEELCHAIR = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/ddaa3b96-f430-4f9c-983c-1ca737ebc73c.jpg";
+const IMG_MEDICINE = "https://cdn.poehali.dev/projects/4275a9e9-69d9-4302-8cbc-8541a96c7d22/files/511696d0-ccda-4fed-aac7-fe6e11ad2af6.jpg";
 
 const SEND_URL = "https://functions.poehali.dev/15eda7c0-7bf7-47b0-b1f5-5c7b89543d11";
 
@@ -184,12 +184,12 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="w-full lg:w-[420px] shrink-0">
-              <div className="rounded-2xl overflow-hidden">
+            <div className="w-full lg:w-[440px] shrink-0">
+              <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
                 <img
                   src={IMG_HERO}
-                  alt="Забота о пожилых"
-                  className="w-full object-cover aspect-[4/5]"
+                  alt="Пожилая женщина в домашнем интерьере"
+                  className="w-full object-cover object-top aspect-[3/4]"
                 />
               </div>
             </div>
@@ -216,7 +216,7 @@ const Index = () => {
                 num: "02",
                 title: "Присмотр и помощь по быту",
                 text: "При деменции, возрастных нарушениях памяти или снижении самостоятельности, когда важно присутствие, контроль лекарств и помощь в повседневных делах.",
-                img: IMG_INTERIOR,
+                img: IMG_WHEELCHAIR,
               },
               {
                 num: "03",
@@ -226,8 +226,8 @@ const Index = () => {
               },
             ].map((item) => (
               <div key={item.num}>
-                <div className="rounded-xl overflow-hidden mb-5">
-                  <img src={item.img} alt={item.title} className="w-full aspect-[4/3] object-cover" />
+                <div className="rounded-xl overflow-hidden mb-5 shadow-[0_4px_24px_rgba(0,0,0,0.05)]">
+                  <img src={item.img} alt={item.title} className="w-full aspect-[3/2] object-cover object-center" />
                 </div>
                 <span className="text-[12px] text-[#56140E] tracking-[0.15em] font-medium uppercase">{item.num}</span>
                 <h3 className="text-[20px] font-bold text-black mt-2 mb-2 leading-tight">{item.title}</h3>
@@ -319,11 +319,11 @@ const Index = () => {
             </div>
 
             <div className="lg:pt-4">
-              <div className="rounded-2xl overflow-hidden">
+              <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.04)]">
                 <img
-                  src={IMG_INTERIOR}
-                  alt="Аккуратный интерьер"
-                  className="w-full aspect-[4/3] object-cover"
+                  src={IMG_CARE_HANDS}
+                  alt="Руки сиделки поддерживают пожилого человека"
+                  className="w-full aspect-[4/3] object-cover object-center"
                 />
               </div>
             </div>
